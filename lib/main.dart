@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './circle_button.dart';
 
 void main() {
   runApp(Calculator());
@@ -18,201 +19,184 @@ class Calculator extends StatelessWidget {
   }
 }
 
-class ButtonRow extends StatelessWidget {
+class ButtonRow extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    double topHeight = MediaQuery.of(context).size.height / 8;
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              padding: EdgeInsets.only(
-                right: 20,
-                bottom: 5,
-                top: topHeight,
-              ),
-              child: Text(
-                "0",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 80,
-                ),
-              ),
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CircleButton(
-              text: "AC",
-              color: Colors.grey[300],
-              textColor: Colors.black,
-            ),
-            CircleButton(
-              text: "+/-",
-              color: Colors.grey[300],
-              textColor: Colors.black,
-            ),
-            CircleButton(
-              text: "%",
-              color: Colors.grey[300],
-              textColor: Colors.black,
-            ),
-            CircleButton(
-              text: "÷",
-              color: Colors.orange[400],
-              textSize: 46,
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CircleButton(
-              text: "7",
-              color: Colors.grey[850],
-              textColor: Colors.white,
-            ),
-            CircleButton(
-              text: "8",
-              color: Colors.grey[850],
-              textColor: Colors.white,
-            ),
-            CircleButton(
-              text: "9",
-              color: Colors.grey[850],
-              textColor: Colors.white,
-            ),
-            CircleButton(
-              text: "×",
-              color: Colors.orange[400],
-              textSize: 46,
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CircleButton(
-              text: "4",
-              color: Colors.grey[850],
-              textColor: Colors.white,
-            ),
-            CircleButton(
-              text: "5",
-              color: Colors.grey[850],
-              textColor: Colors.white,
-            ),
-            CircleButton(
-              text: "6",
-              color: Colors.grey[850],
-              textColor: Colors.white,
-            ),
-            CircleButton(
-              text: "−",
-              color: Colors.orange[400],
-              textSize: 46,
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CircleButton(
-              text: "1",
-              color: Colors.grey[850],
-              textColor: Colors.white,
-            ),
-            CircleButton(
-              text: "2",
-              color: Colors.grey[850],
-              textColor: Colors.white,
-            ),
-            CircleButton(
-              text: "3",
-              color: Colors.grey[850],
-              textColor: Colors.white,
-            ),
-            CircleButton(
-              text: "+",
-              color: Colors.orange[400],
-              textSize: 46,
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CircleButton(
-              text: "0",
-              color: Colors.grey[850],
-              textColor: Colors.white,
-            ),
-            CircleButton(
-              text: "info",
-              color: Colors.grey[850],
-              textColor: Colors.white,
-            ),
-            CircleButton(
-              text: ".",
-              color: Colors.grey[850],
-              textColor: Colors.white,
-            ),
-            CircleButton(
-              text: "=",
-              color: Colors.orange[400],
-              textSize: 46,
-            ),
-          ],
-        ),
-      ],
-    );
-  }
+  _ButtonRowState createState() => _ButtonRowState();
 }
 
-class CircleButton extends StatelessWidget {
-  final Color color;
-  final String text;
-  final Color textColor;
-  final double textSize;
-  CircleButton(
-      {this.color = Colors.grey,
-      this.text = "",
-      this.textColor = Colors.white,
-      this.textSize = 36});
+class _ButtonRowState extends State<ButtonRow> {
+  var buttons = [
+    {
+      'text': 'AC',
+      'color': Colors.grey[300],
+      'textColor': Colors.black,
+      'textSize': 36.0
+    },
+    {
+      'text': '+/-',
+      'color': Colors.grey[300],
+      'textColor': Colors.black,
+      'textSize': 36.0
+    },
+    {
+      'text': '%',
+      'color': Colors.grey[300],
+      'textColor': Colors.black,
+      'textSize': 36.0
+    },
+    {
+      'text': '÷',
+      'color': Colors.orange[400],
+      'textColor': Colors.white,
+      'textSize': 46.0
+    },
+    {
+      'text': '7',
+      'color': Colors.grey[850],
+      'textColor': Colors.white,
+      'textSize': 36.0
+    },
+    {
+      'text': '8',
+      'color': Colors.grey[850],
+      'textColor': Colors.white,
+      'textSize': 36.0
+    },
+    {
+      'text': '9',
+      'color': Colors.grey[850],
+      'textColor': Colors.white,
+      'textSize': 36.0
+    },
+    {
+      'text': '×',
+      'color': Colors.orange[400],
+      'textColor': Colors.white,
+      'textSize': 46.0
+    },
+    {
+      'text': '4',
+      'color': Colors.grey[850],
+      'textColor': Colors.white,
+      'textSize': 36.0
+    },
+    {
+      'text': '5',
+      'color': Colors.grey[850],
+      'textColor': Colors.white,
+      'textSize': 36.0
+    },
+    {
+      'text': '6',
+      'color': Colors.grey[850],
+      'textColor': Colors.white,
+      'textSize': 36.0
+    },
+    {
+      'text': '-',
+      'color': Colors.orange[400],
+      'textColor': Colors.white,
+      'textSize': 46.0
+    },
+    {
+      'text': '1',
+      'color': Colors.grey[850],
+      'textColor': Colors.white,
+      'textSize': 36.0
+    },
+    {
+      'text': '2',
+      'color': Colors.grey[850],
+      'textColor': Colors.white,
+      'textSize': 36.0
+    },
+    {
+      'text': '3',
+      'color': Colors.grey[850],
+      'textColor': Colors.white,
+      'textSize': 36.0
+    },
+    {
+      'text': '+',
+      'color': Colors.orange[400],
+      'textColor': Colors.white,
+      'textSize': 46.0
+    },
+    {
+      'text': '0',
+      'color': Colors.grey[850],
+      'textColor': Colors.white,
+      'textSize': 36.0
+    },
+    {
+      'text': 'info',
+      'color': Colors.grey[850],
+      'textColor': Colors.white,
+      'textSize': 36.0
+    },
+    {
+      'text': '.',
+      'color': Colors.grey[850],
+      'textColor': Colors.white,
+      'textSize': 36.0
+    },
+    {
+      'text': '=',
+      'color': Colors.orange[400],
+      'textColor': Colors.white,
+      'textSize': 46.0
+    },
+  ];
+
+  String _displayValue = "0";
+  List _values = [];
+
+  void _handleButton(value) {
+    setState(() {
+      _values.add(value);
+      print(_values);
+    });
+  }
+
   @override
-  Widget build(context) {
-    double margin = 6.0;
-    double size = (MediaQuery.of(context).size.width / 4) - (margin * 2);
-    return Container(
-      width: size,
-      height: size,
-      margin: EdgeInsets.all(margin),
-      child: Center(
-        child: Text(
-          text,
-          style: TextStyle(
-            color: textColor,
-            fontSize: textSize,
+  Widget build(BuildContext context) {
+    double topHeight = MediaQuery.of(context).size.height / 4;
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          height: topHeight,
+          alignment: Alignment.bottomRight,
+          padding: EdgeInsets.only(
+            right: 20,
+            bottom: 5,
+          ),
+          child: Text(
+            _displayValue,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 80.0,
+            ),
           ),
         ),
-      ),
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.all(
-          Radius.circular(50),
+        Expanded(
+          child: GridView.count(
+            crossAxisCount: 4,
+            mainAxisSpacing: 1,
+            crossAxisSpacing: 1,
+            children: List.generate(buttons.length, (index) {
+              return CircleButton(
+                  text: buttons[index]['text'],
+                  color: buttons[index]['color'],
+                  textColor: buttons[index]['textColor'],
+                  textSize: buttons[index]['textSize'],
+                  tap: () {
+                    _handleButton(buttons[index]['text']);
+                  });
+            }),
+          ),
         ),
-      ),
+      ],
     );
   }
 }
