@@ -149,12 +149,60 @@ class _ButtonRowState extends State<ButtonRow> {
   ];
 
   String _displayValue = "0";
+  double _currentNum = 0;
   List _values = [];
 
   void _handleButton(value) {
     setState(() {
       _values.add(value);
+      print(_displayValue);
+      print(_currentNum);
       print(_values);
+      switch (value) {
+        case 'AC':
+          _values = [];
+          _displayValue = '0';
+          break;
+        case '+/-':
+          // converts to absoulte value or to a negative value
+          if (_currentNum.isNegative) {
+            var newValue = _currentNum + (_currentNum + _currentNum);
+            _displayValue = '$newValue';
+          } else {
+            var newValue = _currentNum - (_currentNum + _currentNum);
+            _displayValue = '$newValue';
+          }
+          break;
+        case '%':
+          // converts value to a double with decimal format 0.00
+          // 9 -> 0.09 | 99 -> 0.99 | 999 -> 9.99
+          break;
+        case '÷':
+          // divides the current value with whatever value comes next
+          // 9 ÷ 3 -> 3
+          break;
+        case 'x':
+          // multiplies the current value with whatever value comes next
+          break;
+        case '-':
+          // subtracts the current value with whatever value comes next
+          break;
+        case '+':
+          // adds the current value with whatever value comes next
+          break;
+        case '=':
+          // print the end calculated result
+          break;
+        default:
+          if (_displayValue != '0') {
+            String newValue = '$_displayValue$value';
+            _displayValue = newValue;
+            _currentNum = double.parse(newValue);
+          } else {
+            _displayValue = '$value';
+            _currentNum = double.parse(value);
+          }
+      }
     });
   }
 
